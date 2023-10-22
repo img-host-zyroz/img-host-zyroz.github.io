@@ -11,8 +11,10 @@
         Images filtered by category</h1>
     <div id="images" style="padding: 2rem; padding-top: 0;"></div>
 
-    <script>
+    <script src="./config.js" defer></script>
+    <script src="./main.js" defer></script>
 
+    <!-- <script defer>
         function formatFileSize(size) {
             const KB = 1024;
             const MB = KB * 1024;
@@ -29,10 +31,10 @@
             }
         }
 
-        const token = "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"
+        // const token = TOKEN
 
         const headers = {
-            "Authorization": `Bearer ${token}`,
+            "Authorization": `Bearer ${TOKEN}`,
             "Accept": "application/vnd.github+json",
         };
 
@@ -149,7 +151,7 @@
         getRateLimitInfo()
 
         getCategorys()
-    </script>
+    </script> -->
 </body>
 
 </html>
