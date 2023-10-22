@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image List</title>
+</head>
+<body>
+    <h1>Image List</h1>
+    <ul id="image-list">
+    </ul>
+
+    <script>
+        // Function to fetch and list image files along with creation dates
+        async function listImages() {
+            const response = await fetch('https://api.github.com/repos/zyr0z/img-host/contents/');
+            const data = await response.json();
+
+            const imageList = document.getElementById('image-list');
+            data.forEach(item => {
+                if (item.type === 'file' && item.name.match(/\.(jpg|jpeg|png|gif)$/)) {
+                    const listItem = document.createElement('li');
+                    const imageLink = document.createElement('a');
+                    imageLink.href = item.download_url;
+                    imageLink.textContent = item.name;
+                    listItem.appendChild(imageLink);
+
+                    const createdDate = new Date(item.created_at);
+                    const dateSpan = document.createElement('span');
+                    dateSpan.textContent = ` (Created at ${createdDate.toDateString()})`;
+                    listItem.appendChild(dateSpan);
+
+                    imageList.appendChild(listItem);
+                }
+            });
+        }
+
+        listImages();
+    </script>
+</body>
+</html>
