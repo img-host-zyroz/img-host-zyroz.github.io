@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Image List</title>
 </head>
+
 <body>
     <h1>Images</h1>
     <ul id="image-list">
+        <h2>WPF_INF_23/24</h2>
     </ul>
 
     <script>
@@ -19,14 +22,22 @@
                 if (item.type === 'file' && item.name.match(/\.(jpg|jpeg|png|gif)$/)) {
                     const listItem = document.createElement('li');
                     const imageLink = document.createElement('a');
-                    imageLink.href = `/${item.name};
+                    imageLink.href = `/${item.name}`;
                     imageLink.textContent = item.name;
                     listItem.appendChild(imageLink);
 
-                    const createdDate = item.created_at;
-                    const dateSpan = document.createElement('span');
-                    dateSpan.textContent = ` (Created at ${createdDate})`;
-                    listItem.appendChild(dateSpan);
+                    const sha_hash = item.sha;
+
+                    const hashSpan = document.createElement('span');
+                    hashSpan.textContent = ` Hash: ${sha_hash}`;
+
+                    const hashStyle = hashSpan.style
+                    hashStyle.position = "absolute"
+                    hashStyle.paddingRight = '1rem'
+                    hashStyle.left = '50%'
+
+                    listItem.appendChild(hashSpan);
+
 
                     imageList.appendChild(listItem);
                 }
@@ -36,4 +47,5 @@
         listImages();
     </script>
 </body>
+
 </html>
