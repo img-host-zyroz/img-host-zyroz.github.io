@@ -12,6 +12,22 @@
     </ul>
 
     <script>
+
+        function convertFileSize(sizeInBytes) {
+            const KB = 1024;
+            const MB = KB * 1024;
+            const GB = MB * 1024;
+
+            if (sizeInBytes < KB) {
+                return sizeInBytes + ' B';
+            } else if (sizeInBytes < MB) {
+                return (sizeInBytes / KB).toFixed(2) + ' KB';
+            } else if (sizeInBytes < GB) {
+                return (sizeInBytes / MB).toFixed(2) + ' MB';
+            } else {
+                return (sizeInBytes / GB).toFixed(2) + ' GB';
+            }
+        }
         // Function to fetch and list image files along with creation dates
         async function listImages() {
             const response = await fetch('https://api.github.com/repos/zyr0z/img-host/contents/');
@@ -28,13 +44,21 @@
 
                     const sha_hash = item.sha;
 
+                    const sizeSpan = document.createElement('span');
+                    sizeSpan.textContent = `Size: ${convertFileSize(item.size)}`;
+
+                    const sizeStyle = sizeSpan.style
+                    sizeStyle.position = "absolute"
+                    sizeStyle.left = '25%'
+
+                    listItem.appendChild(sizeSpan);
+
                     const hashSpan = document.createElement('span');
-                    hashSpan.textContent = ` Hash: ${sha_hash}`;
+                    hashSpan.textContent = `Hash: ${sha_hash}`;
 
                     const hashStyle = hashSpan.style
                     hashStyle.position = "absolute"
-                    hashStyle.paddingRight = '1rem'
-                    hashStyle.left = '50%'
+                    hashStyle.left = `45%`
 
                     listItem.appendChild(hashSpan);
 
