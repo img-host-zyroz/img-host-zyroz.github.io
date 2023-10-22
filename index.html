@@ -19,13 +19,13 @@
                 if (item.type === 'file' && item.name.match(/\.(jpg|jpeg|png|gif)$/)) {
                     const listItem = document.createElement('li');
                     const imageLink = document.createElement('a');
-                    imageLink.href = item.download_url;
+                    imageLink.href = `/${item.name};
                     imageLink.textContent = item.name;
                     listItem.appendChild(imageLink);
 
-                    const createdDate = new Date(item.created_at);
+                    const createdDate = item.created_at;
                     const dateSpan = document.createElement('span');
-                    dateSpan.textContent = ` (Created at ${createdDate.toDateString()})`;
+                    dateSpan.textContent = ` (Created at ${createdDate})`;
                     listItem.appendChild(dateSpan);
 
                     imageList.appendChild(listItem);
