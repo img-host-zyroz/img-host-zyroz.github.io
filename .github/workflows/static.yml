@@ -32,7 +32,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Inject Access Token
-        run: echo "window.TOKEN = '${{ secrets.API_TOKEN }}'" > config.js
+        run: echo "window.TOKEN = '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'" > config.js
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
