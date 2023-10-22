@@ -40,6 +40,7 @@
                     const imageLink = document.createElement('a');
                     imageLink.href = `/img/${item.name}`;
                     imageLink.textContent = item.name;
+                    imageLink.target = "_blank"
                     listItem.appendChild(imageLink);
 
                     const sha_hash = item.sha;
