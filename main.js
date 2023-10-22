@@ -29,8 +29,10 @@ async function getCategorys() {
   const data = await response.json();
 
   data.forEach((element) => {
-    if (element.type === "dir") {
-      getFile(element.name);
+    if (element.name != ".github") {
+      if (element.type === "dir") {
+        getFile(element.name);
+      }
     }
   });
 }

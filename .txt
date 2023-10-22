@@ -1,1 +1,0 @@
-echo -e "const TOKEN = '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';\n\nexport default TOKEN;" > config.js
