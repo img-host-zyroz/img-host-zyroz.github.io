@@ -22,7 +22,7 @@
                 if (item.type === 'file' && item.name.match(/\.(jpg|jpeg|png|gif)$/)) {
                     const listItem = document.createElement('li');
                     const imageLink = document.createElement('a');
-                    imageLink.href = `/${item.name}`;
+                    imageLink.href = `/img/${item.name}`;
                     imageLink.textContent = item.name;
                     listItem.appendChild(imageLink);
 
